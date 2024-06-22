@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <link rel="stylesheet" href="logo.png">
+ 
+ 
+  <title>Spotify-Web Player Music for everyone</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+    *{
+        margin:0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        overflow: hidden;
+    }
+
+    .main{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+padding: .25vw;
+    }
+
+    .sidebar{
+   margin-right: 0.2vw;
+    width: 25vw;
+    border-radius: 1rem;
+  background-color: black;
+    }
+
+    .maincontent{
+        background-color: #121212;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .musicplayer{
+        background-color: greenyellow;
+        position: fixed;
+        bottom: 0px;
+        height: 13vh;
+        width: 100%;
+        background-color: #121212;
+        margin: 10px 0 0 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav{
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
+        height: 18vh;
+       line-height: 7vh;
+       background-color: black;
+    }
+
+    .navo{
+       margin: 0 0.7vw;
+       opacity: 0.5;
+       background-color: #232323;
+    
+    }
+
+    
+    .navo:hover{
+        opacity: 1;
+    }
+    .navo i{
+       font-size: 1.3vw;
+       background-color: #232323;
+    }
+     .navo a{ 
+        text-decoration: none;
+        margin: 0 1vw;
+        font-family: "Merriweather", serif;
+        font-size: 1.3vw;
+        background-color: #232323;
+    }
+
+    .lib{
+        background-color: #121212;
+        border-radius: 1rem;
+        height: 100%;
+        margin: 1vh;
+        padding: 10px 0 0 0;
+    }
+    .options{
+        display: flex;
+        background-color: #121212;
+    }
+
+    .options img{
+        height: 2.5vh;
+        margin: 0 3vh;
+        opacity: 0.5;
+    }
+
+    .options img:hover{
+        opacity: 1;
+    }
+
+    .options a{
+        text-decoration: none;
+       opacity: 0.5;
+        font-family: "Merriweather", serif;
+        font-size: 1.3vw;
+        background-color: #121212;
+    }
+
+    .options a:hover{
+        opacity: 1;
+    }
+
+
+    .options .icons {
+       margin: 0 2vw 0 2vw;
+       padding: 0 0 0 2.5vw;
+       letter-spacing: 2px;
+       background-color: #121212;
+     
+    }
+
+    .icons i{
+        opacity: 0.5;
+        background-color: #121212;
+    }
+    .icons i:hover{
+        opacity: 1;
+    }
+    .navc{
+        background-color: #232323;
+        border-radius: 10px;
+        padding: 0 12px 0 0;
+    }
+    
+     .options i{
+      margin: 0 0.25vw;
+     }
+.lib{
+    background-color: #121212;
+}
+.libbox{
+    background-color: #121212;
+}
+    .box1{
+        width: 100%;
+        height: 20vh;
+        background-color: #232323;
+     
+        margin: 1.5vw 0 1.25vw 0;
+        padding: 0.75vw 0 0 ;
+        border-radius: 10px;
+    }
+    .boxp1{
+        background-color: #232323;
+        font-size: 400px;
+        opacity: 0.9;
+        font-weight: 600;
+        margin: 5px 0 15px 10px;
+      font-size: medium;
+    }
+
+    .boxp2{
+        background-color: #232323;
+        font-size: small;
+        opacity: 0.7;
+        margin: 0 0 20px 10px;
+    }
+
+    .badge{
+        background-color: white;
+        color: black;
+        border: none;
+        border-radius: 100px;
+        padding: 0.6vw 1.4vw;
+        font-weight: bold;
+        width: fit-content;
+        margin: 0 0 0 10px;
+    }
+
+    #b1:hover{
+        
+        height: 5.1vh;
+        width: 10vw;
+        transition: .2s;
+          }
+
+          #b2:hover{
+            transition: 1s;
+        height: 5.1vh;
+        width: 11.7vw;
+          }
+        
+    
+    .stickynav{
+        background-color: #121212;
+        position: sticky;
+width: 100%;
+display: flex;
+justify-content: space-between;
+top: 0;
+    }
+    #venom{
+        background-color: black;
+        color: white;
+       
+         }
+         .navarrows{
+background-color: #121212;
+margin: 10px 0 0 10px;
+         }
+
+         .download{
+                margin: 5px 30px 0 0;
+            background-color: #121212;
+            display: flex;
+            padding: 15px 0;
+         }
+         #a1{
+            background-color: black;
+  margin: 10px 10px;
+  padding: 10px 13px;
+  border-radius: 50%;
+  font-size: smaller;
+         }
+         #a2{
+            background-color: black;
+  margin: 10px 0px;
+  padding: 10px 13px;
+  border-radius: 50%;
+  font-size: smaller;
+         }
+         #a3{
+            margin: 0 5px 0 0;
+         }
+         #a4{
+            margin: 10px 10px;
+            padding: 0 0 0 10px;
+            background-color: #121212;
+         }
+.cards{
+    background-color: #121211;
+}
+    h2{
+        background-color: #121212;
+        margin-bottom: 20px;
+    }
+
+    .cardc{
+display: flex;
+flex-direction: row;
+background: #121211;
+flex-wrap: wrap;
+}
+.card{
+    height: 40vh;
+    width: 15vw;
+    background-color: #232323;
+    padding: 15px 15px 0 22px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.cardimg{
+height: 25vh;
+width: 14vw;
+border-radius: 10px;
+} 
+
+.cardimg:hover{
+    height: 26vh;
+width: 14.5vw;
+transition:.3s ;
+}
+.cardtitle{
+margin-top: 10px;
+margin-bottom: 10px;
+    font-weight: bold;
+    background-color: #232323;
+}
+
+.cardi{
+    background-color: #232323;
+    font-size: small;
+    
+    margin-top: 7px;
+}
+.new{
+margin-top: 4vh;
+}
+
+
+
+
+.album{
+    width: 25%;
+display: flex;
+justify-content: center;
+align-items: center
+}
+
+.pic1{
+    height:50px;
+    width: 50px;
+  margin-left: -40px;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.t1{
+font-size: 13px;
+margin-bottom: 4px;
+}
+.t2{
+    font-size: 10px;
+    opacity: 0.7;
+   letter-spacing: 0.5px;
+}
+.pic2{
+height: 20px;
+width: 20px;
+margin-left: 15px;
+margin-right: 10px;
+}
+.pic3{
+height: 30px;
+width: 25px;
+margin-left: 5px;
+}
+.playercontrols{
+    width: 50%;
+    height: 100%;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   padding: 5px 130px 0 130px;
+   margin-bottom: 2px;
+}
+
+.i{
+    height: 13px;
+    opacity: 0.5;
+}
+
+.i:hover{
+    opacity: 1;
+}
+#play{
+    height: 40px;
+    opacity: 1;
+}
+.player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.bar{
+    width: 40vw;
+    appearance: none;
+   cursor: pointer;
+   height: 20px;
+   margin-top: 7px;
+}
+.bar1{
+    width: 10vw;
+    appearance: none;
+   cursor: pointer;
+   height: 20px;
+ padding-right: 10px;
+}
+.bar::-webkit-slider-runnable-track{
+    background-color: #232323;
+border-radius: 100px;
+height: 3px;
+
+}
+.bar1::-webkit-slider-runnable-track{
+    background-color: white;
+border-radius: 100px;
+height: 3px;}
+
+.bar::-webkit-slider-thumb{
+  appearance: none;
+    height: 16px;
+    width: 16px;
+    background-color: rgb(33, 254, 21);
+    border-radius: 50%;
+    margin-top: -6px;
+}
+
+.bar1::-webkit-slider-thumb{
+  appearance: none;
+    
+}
+
+
+.controls{
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.c{
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+
+}
+
+.c:hover{
+    height: 23px;
+    width: 21px;
+}
+
+#a1:hover{
+background-color: #232323;
+}
+#a2:hover{
+background-color: #232323;
+}
+
+
+
+ </style>
+</head>
+<body>
+    <div class="main">
+    <div class="sidebar">
+<div class="nav">
+   <div class="navc"><div class="navo">
+        <i class="fa-solid fa-house"></i>
+        <a href="#">Home</a>
+    </div>
+    <div class="navo">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <a href="#">Search</a>
+    </div></div>
+</div>
+<div class="lib">
+    <div class="options">
+       <img src="library_icon.png" alt="">
+        <a href="#">Your Library</a>
+        <div class="icons">
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </div>
+    <div class="libbox">
+        <div class="box1">
+        <p class="boxp1">Create your first playlist</p>
+        <p class="boxp2">It's easy we'll help you</p>
+        <button class="badge" id="b1">Create playlist</button>
+    </div>
+    <div class="box1">
+        <p class="boxp1">Let's find podcasts to follow</p>
+        <p class="boxp2">We'll keep you updated on new episodes</p>
+        <button class="badge" id="b2">Browse podcasts</button>
+    </div>
+</div>
+</div>
+    </div>
+    <div class="maincontent">
+        <div class="stickynav">
+          <div class="navarrows">
+              <i id="a1" class="fa-solid fa-angle-left" ></i>
+            <i id="a2" class="fa-solid fa-angle-right"></i></div>
+            <div class="download"><button id="b3" class="badge">Explore Premium</button>
+            <button class="badge" id="venom"><i id="a3"  class="fa-solid fa-circle-arrow-down"></i>Install app</button>
+            <i id="a4" class="fa-regular fa-user"></i>
+        </div> </div>
+        
+        <h2>Recently Played</h2>
+    <div class="cardc">
+        <div class="card">
+            <img src="card1img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">Top 50-Global</p>
+            <p class="cardi">Your daily updates of the most played tracks</p>
+        </div>
+    </div>
+    <h2 class="new">Trending now near you</h2>
+    <div class="cardc">
+        <div class="card">
+            <img src="card2img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">Darshan Raval</p>
+            <p class="cardi">Listen to your favorite artist</p>
+        </div>
+        <div class="card">
+            <img src="card3img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">Mere pass tum ho</p>
+            <p class="cardi">Listen to your favorite artist</p>
+        </div>
+        <div class="card">
+            <img src="card4img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">South Mix</p>
+            <p class="cardi">Listen to your favorite music</p>
+        </div>
+        <div class="card">
+            <img src="card5img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">Top Songs Global</p>
+            <p class="cardi">Weekly music charts hits your soul </p>
+        </div> <div class="card">
+            <img src="card6img.jpeg" alt="" class="cardimg">
+            <p class="cardtitle">Top Songs India</p>
+            <p class="cardi">Weekly music charts hits your soul</p>
+        </div>
+        
+    </div>
+    <h2 class="new">Your Favorite Artists</h2>
+    <div class="cardc">
+        <div class="card">
+            <img src="img1.png" alt="" class="cardimg">
+            <p class="cardtitle">Arjit Singh Mashup</p>
+            <p class="cardi">Listen to your favorite artist</p>
+        </div>
+        <div class="card">
+            <img src="img2.png" alt="" class="cardimg">
+            <p class="cardtitle">The Local Train</p>
+            <p class="cardi">Listen to your favorite artist</p>
+        </div>
+        <div class="card">
+            <img src="img3.png" alt="" class="cardimg">
+            <p class="cardtitle">Anuv Jain</p>
+            <p class="cardi">Listen to your favorite artist</p>
+        </div>
+        
+    </div>
+    <h2 class="new">Listen Music Daily</h2>
+    <div class="cardc">
+        <div class="card">
+            <img src="img4.png" alt="" class="cardimg">
+            <p class="cardtitle">Atif Aslam</p>
+            <p class="cardi">Your daily platform of favourite music</p>
+        </div>
+        <div class="card">
+            <img src="img5.png" alt="" class="cardimg">
+            <p class="cardtitle">Atif Aslam</p>
+            <p class="cardi">Your daily platform of favourite music</p>
+        </div>
+        <div class="card">
+            <img src="img6.png" alt="" class="cardimg">
+            <p class="cardtitle">Bollywood central</p>
+            <p class="cardi">Your daily platform of favourite music</p>
+        </div>
+            </div>
+            
+ </div>
+     <div class="musicplayer">
+<div class="album">
+<img src="album_picture.jpeg" alt="" class="pic1">
+<div class="text">
+    <p class="t1">Daylight</p>
+    <p class="t2">David Kushner</p>
+</div>
+<img src="album_icon1.png" alt="" class="pic2">
+<img src="album_icon2.png" alt="" class="pic3">
+</div>
+<div class="playercontrols">
+   <div class="buttons"><img src="player_icon1.png" alt="" class="i">
+    <img src="player_icon2.png" alt="" class="i">
+    <img src="player_icon3.png" alt="" class="i" id="play">
+    <img src="player_icon4.png" alt="" class="i">
+    <img src="player_icon5.png" alt="" class="i"></div> 
+    <div class="player">
+        <span class="start">1:33</span>
+        <input type="range" class="bar">
+        
+    <span class="end">3:33</span>
+    </div>
+</div>
+<div class="controls">
+    <img src="controls_icon1.png" alt="" class="c">
+    <img src="iconic.png" alt="" class="c">
+    <img src="controls_icon3.png" alt="" class="c">
+    <img src="controls_icon4.png" alt="" class="c">
+    <img src="controls_icon5.png" alt="" class="c">
+    <input type="range" class="bar1">
+</div>
+    </div>
+</div>
+</body>
+</html>
